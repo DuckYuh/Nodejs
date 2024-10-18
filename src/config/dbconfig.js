@@ -1,3 +1,5 @@
+const sql = require('mssql');
+
 const config = {
     user: 'sa', // Tên người dùng
     password: 'huy12345678', // Mật khẩu
@@ -10,4 +12,13 @@ const config = {
     }
 };
 
-module.exports = config;
+const connectDB = async () => {
+    try {
+        await sql.connect(config);
+        console.log('Connected to MSSQL database');
+    } catch (err) {
+        console.error('Database connection failed:', err.message);
+    }
+};
+
+module.exports = { connectDB, sql };
