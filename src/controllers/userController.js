@@ -31,6 +31,10 @@ exports.createUser = async (req, res) => {
         await userModel.createUser(userID, username, password);
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
+        if (error.message === 'username already exists') {
+            return res.status(400).json({ message: 'username already exists' });
+        }
+        
         res.status(500).json({ message: error.message });
     }
 };

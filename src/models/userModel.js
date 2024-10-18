@@ -21,9 +21,25 @@ const getUserById = async (userID) => {
     }
 };
 
+// Hàm kiểm tra xem username đã tồn tại chưa
+const checkusernameExists = async (username) => {
+    try {
+        const result = await sql.query`SELECT * FROM [dbo].[User] WHERE username = ${username}`;
+        return result.recordset.length > 0; // Trả về true nếu username đã tồn tại
+    } catch (error) {
+        throw error;
+    }
+};
+
 // Hàm tạo người dùng mới
 const createUser = async (userID, username, password) => {
     try {
+        // Kiểm tra xem username đã tồn tại chưa
+        const usernameExists = await checkusernameExists(username);
+        if (usernameExists) {
+            throw new Error('username already exists'); // Ném lỗi nếu username đã tồn tại
+        }
+
         await sql.query`INSERT INTO [dbo].[User] (userID, username, password) VALUES (${userID}, ${username}, ${password})`;
     } catch (error) {
         throw error;
