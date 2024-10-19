@@ -4,10 +4,11 @@ import viewEngine from "./config/viewEngine";
 import initWebRoute from "./routes/web";
 const { connectDB } = require('./config/dbconfig');
 const userRoutes = require('./routes/userRoutes');
+const customerRoutes = require('./routes/customerRoutes');
 require('dotenv').config();
 
 let app = express();
-let port = process.env.PORT || 8080;
+let port = process.env.PORT || 8081;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -15,7 +16,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 viewEngine(app);
 initWebRoute(app);
 
-app.use('/api', userRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/customers', customerRoutes);
 
 connectDB()
     .then(() => {
