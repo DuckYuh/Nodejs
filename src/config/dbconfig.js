@@ -2,13 +2,12 @@ const sql = require('mssql');
 
 const config = {
     user: 'sa', // Tên người dùng
-    password: 'huy12345678', // Mật khẩu
-    server: 'localhost\\SQLEXPRESS', // Địa chỉ máy chủ
+    password: 'huy1202', // Mật khẩu
+    server: 'localhost', // Địa chỉ máy chủ
     database: 'cnpm', // Tên cơ sở dữ liệu
     options: {
         encrypt: true, // Azure
-        trustServerCertificate: true, 
-        enableArithAbort: true,
+        trustServerCertificate: true 
     }
 };
 
