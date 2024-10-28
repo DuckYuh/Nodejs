@@ -12,7 +12,7 @@ const CartItemModel = {
         .query('INSERT INTO Cart_item (cartItemID, cartID, itemID, quantity, price) VALUES (@cartItemID, @cartID, @itemID, @quantity, @price)');
     },
 
-    getCartItem: async () => {
+    getCartItems: async () => {
         const result = await new sql.Request().query('SELECT * FROM Cart_item');
         return result.recordset;
     },
