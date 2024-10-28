@@ -15,7 +15,7 @@ const getAllItem = async () =>{
 const getItemById = async (itemID) =>{
     try {
         const result = await sql.query`SELECT * FROM [dbo].[Item] WHERE itemID = ${itemID}`;
-        return result.recordset[0]; 
+        return result.recordset[0]; //Trả về sản phẩm đầu tiên (nếu có)
     } catch (error) {
         throw error;
     }
