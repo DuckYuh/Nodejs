@@ -32,14 +32,14 @@ const checkItemExist = async (itemname) => {
 }
 
 //Hàm tạo sản phẩm mới
-const createItem = async (itemID, itemname, itemAmount, itemSize, itemCategory, itemPrice ) => {
+const createItem = async (itemID, imageID, itemname, itemDescription, itemType, price, size, quantity ) => {
     try {
         // Kiểm tra sản phẩm đã tồn tại chưa
         const itemnameExists = await checkitemnameExists(itemname);
         if(itemnameExists) {
             throw new Error('itemname already exists'); // Ném lỗi nếu itemname đã tồn tại
         }
-        await sql.query`INSERT INTO [dbo].[Item] (itemID, itemname, itemAmount, itemCategory, itemSize, itemPrice) VALUES (${itemID}, ${itemname}, ${itemAmount}, ${itemCategory}, ${itemSize}, ${itemPrice})`;
+        await sql.query`INSERT INTO [dbo].[Item] (itemID, imageID, itemname, itemDescription, itemType, price, size, quantity) VALUES (${itemID}, ${imageID}, ${itemname}, ${itemDescription}, ${itemType}, ${price}, ${size}, ${quantity})`;
 
     } catch (error) {
         throw error;
@@ -47,9 +47,9 @@ const createItem = async (itemID, itemname, itemAmount, itemSize, itemCategory, 
 };
 
 // Hàm cập nhật sản phẩm
-const updateItem = async (itemID, itemname, itemAmount, itemCategory, itemSize, itemPrice) => {
+const updateItem = async (itemID, imageID, itemname, itemDescription, itemType, price, size, quantity) => {
     try{
-        await sql.query`UPDATE [dbo].[Item] SET itemname = ${itemname}, itemAmount = ${itemAmount}, itemCategory = ${itemCategory}, itemSize = ${itemSize}, itemPrice=${itemPrice} WHERE itemID = ${itemID}`;
+        await sql.query`UPDATE [dbo].[Item] SET imageID=${imageID} itemname = ${itemname}, itemDescription = ${itemDescription}, itemType = ${itemType}, price = ${price}, size=${size}, quantity = ${quantity} WHERE itemID = ${itemID}`;
     } catch (error) {
         throw error;
     }

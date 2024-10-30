@@ -8,7 +8,7 @@ const CartItemModel = {
         .input('cartID', sql.Char(10), cartID)
         .input('itemID', sql.Char(10), itemID)
         .input('quantity', sql.Int, quantity)
-        .input('price', sql.Int, price)
+        .input('price', sql.Decimal(18,0), price)
         .query('INSERT INTO Cart_item (cartItemID, cartID, itemID, quantity, price) VALUES (@cartItemID, @cartID, @itemID, @quantity, @price)');
     },
 
@@ -32,7 +32,7 @@ const CartItemModel = {
             .input('cartID', sql.Char(10), cartID)
             .input('itemID', sql.Char(10), itemID)
             .input('quantity', sql.Int, quantity)
-            .input('price', sql.Int, price)
+            .input('price', sql.Decimal(18,0), price)
             .query('UPDATE Cart_item SET cartID = @cartID, itemID = @itemID, quantity = @quantity, price=@price WHERE cartItemID = @cartItemID'); 
     },
 

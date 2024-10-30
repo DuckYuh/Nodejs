@@ -27,8 +27,8 @@ exports.getItemByID = async (req, res) => {
 // Tạo sản phẩm mới
 exports.createItem = async (req, res) => {
     try{
-        const {itemID, itemname, itemAmount, itemSize, itemCategory, itemPrice} = req.body;
-        await itemModel.createItem(itemID,itemname,itemAmount, itemSize, itemCategory,itemPrice );
+        const {itemID, imageID, itemname, itemDescription, itemType, price, size, quantity } = req.body;
+        await itemModel.createItem(itemID, imageID, itemname, itemDescription, itemType, price, size, quantity  );
         res.status(201).json({message: 'Item created successfully'});
     } catch (error) {
         if(error.message == 'itemname already exists') {
@@ -42,13 +42,13 @@ exports.createItem = async (req, res) => {
 // Cập nhật sản phẩm
 exports.updateItem = async (req, res) => {
     try {
-        const { itemname, itemAmount, itemCategory, itemSize, itemPrice} = req.body;
+        const { itemID, imageID, itemname, itemDescription, itemType, price, size, quantity } = req.body;
         const item = await itemModel.getUserById(req.params.itemID);
         if (!item) {
             return res.status(404).json({message: 'Item not found'});
         }
 
-        await itemModel.updateItem(req.params.itemID, itemname, itemAmount, itemCategory, itemSize, itemPrice);
+        await itemModel.updateItem(req.params.itemID, imageID, itemname, itemDescription, itemType, price, size, quantity );
         res.status(200).json({message: 'Item update successfully'});
     } catch (error) {
         res.status(500).json({message: error.message });

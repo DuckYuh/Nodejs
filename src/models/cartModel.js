@@ -2,16 +2,13 @@ const { sql } = require('../config/dbconfig');
 const { updateCartItem, deleteCartItem } = require('./cart_itemModel');
 
 const CartModel = {
-    createCart: async (cartID, customerID, itemID, price, quantity, cartDay) => {
+    createCart: async (cartID, customerID, price) => {
         const request = new sql.Request();
         await request
-            .input('cartID', sql.Char(10), cartID)
-            .input('customerID', sql.Char(10), customerID)
+            .input('cartID', sql.Char(10), cartID)            
             .input('itemID', sql.Char(10), itemID)
-            .input('price', sql.Int, price)
-            .input('quantity', sql.Int, quantity)
-            .input('cartDay', sql.DateTime, cartDay)
-            .query('INSERT INTO Cart(cartID, customerID, itemID, price, quantity, cartDay) VALUES(@cartID, @customerID, @itemID, @price, @quantity, @cartDay)');
+            .input('price', sql.Int, price)            
+            .query('INSERT INTO Cart(cartID, customerID, price) VALUES(@cartID, @customerID, @price)');
     },
 
     getCarts: async () => {
@@ -32,11 +29,8 @@ const CartModel = {
         await request
             .input('cartID', sql.Char(10), cartID)
             .input('customerID', sql.Char(10), customerID)
-            .input('itemID', sql.Char(10), itemID)
-            .input('price', sql.Int, price)
-            .input('quantity', sql.Int, quantity)
-            .input('cartDay', sql.DateTime, cartDay)
-            .query('UPDATE Cart SET customerID=@customerID, itemID=@itemID, price=@price, quantity=@quantity, cartDay=@cartDay WHERE cartID=@cartID');
+            .input('price', sql.Int, price)            
+            .query('UPDATE Cart SET customerID=@customerID, price=@price WHERE cartID=@cartID');
     },
 
     deleteCart: async (cartID) => {

@@ -2,10 +2,10 @@ const CartModel = require('../models/cartModel');
 
 const CartController = {
     createCart: async (req, res) => {
-        const {cartID, customerID, itemID, price, quantity, cartDay} = req.body;
+        const {cartID, customerID,  price} = req.body;
 
         try {
-            await CartModel.createCart(cartID, customerID, itemID, price, quantity, cartDay);
+            await CartModel.createCart(cartID, customerID, price);
             res.status(201).json({message: 'Cart created successfully'});
         } catch (err) {
             res.status(500).json({error: 'Error creating cart: ' + err});
@@ -39,10 +39,10 @@ const CartController = {
 
     updateCart: async (req, res) => {
         const cartID = req.params.id;
-        const{ customerID, itemID, price, quantity, cartDay} = red.body;
+        const{ customerID, price} = red.body;
 
         try {
-            await CartModel.updateCart(cartID, customerID, itemID, price, quantity, cartDay);
+            await CartModel.updateCart(cartID, customerID, price);
             res.json({message: 'Cart updated successfully!'});
         } catch (err) {
             res.status(500).json({error: 'Error updating cart: ' +err});

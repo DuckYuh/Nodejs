@@ -5,20 +5,19 @@ import initWebRoute from "./routes/web";
 const { connectDB } = require('./config/dbconfig');
 const userRoutes = require('./routes/userRoutes');
 const customerRoutes = require('./routes/customerRoutes');
-<<<<<<< HEAD
+
 const orderRoutes = require('./routes/orderRoutes');
 const orderItemRoutes = require('./routes/order_itemRoutes');
 const paymentRoute = require('./routes/paymentRoutes');
+
+const cartItems = require('./routes/cart_itemRoutes');
+const carts = require('./routes/cartRoutes');
+const item = require('./routes/itemRoutes');
 require('dotenv').config();
 
 let app = express();
 let port = process.env.PORT || 8080;
-=======
 require('dotenv').config();
-
-let app = express();
-let port = process.env.PORT || 8081;
->>>>>>> 1f45844f98cde4ba7fe027b291208beffb278491
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -28,13 +27,14 @@ initWebRoute(app);
 
 app.use('/api/users', userRoutes);
 app.use('/api/customers', customerRoutes);
-<<<<<<< HEAD
 app.use('/api/orders', orderRoutes);
 app.use('/api/orderItems', orderItemRoutes);
 app.use('/api/payments', paymentRoute);
-=======
+app.use('/api/cartItems', cartItems);
+app.use('/api/carts', carts);
+app.use('/api/item', item);
 
->>>>>>> 1f45844f98cde4ba7fe027b291208beffb278491
+
 connectDB()
     .then(() => {
         app.listen(port, () => {
