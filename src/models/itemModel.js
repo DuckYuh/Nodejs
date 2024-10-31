@@ -1,5 +1,5 @@
 // models/itemModel.js 
-const{sql} = require('../congif/dbconfig');
+const{sql} = require('../config/dbconfig');
 
 //Hàm lấy danh sách tất cả sản phẩm
 const getAllItem = async () =>{

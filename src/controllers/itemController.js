@@ -1,5 +1,5 @@
 // controllers/itemController.js
-const itemModel = require('../src/models/userModel');
+const itemModel = require('../models/itemModel');
 
 //Lấy danh sách tất cả sản phẩm
 exports.getitems = async (req, res) => {
