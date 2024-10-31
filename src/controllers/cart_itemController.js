@@ -42,7 +42,7 @@ const CartItemController = {
         const { cartID, itemID, quanity, price } = req.body;
 
         try {
-            await cartItemModel.updateCartItem(cartItemID, cartID, itemID, quanity, price);
+            await CartItemModel.updateCartItem(cartItemID, cartID, itemID, quanity, price);
             res.json({ message: 'Cart item updated successfully!' });
         } catch (err) {
             res.status(500).json({ error: 'Error updating cart item: ' + err });

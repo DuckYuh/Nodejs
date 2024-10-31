@@ -33,7 +33,7 @@ const CartItemModel = {
             .input('itemID', sql.Char(10), itemID)
             .input('quantity', sql.Int, quantity)
             .input('price', sql.Decimal(18,0), price)
-            .query('UPDATE Cart_item SET cartID = @cartID, itemID = @itemID, quantity = @quantity, price=@price WHERE cartItemID = @cartItemID'); 
+            .query('UPDATE Cart_item SET cartID = @cartID, itemID = @itemID, quanity = @quantity, price=@price WHERE cartItemID = @cartItemID'); 
     },
 
     deleteCartItem: async (cartItemID) => {
