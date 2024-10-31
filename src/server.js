@@ -5,15 +5,15 @@ import initWebRoute from "./routes/web";
 const { connectDB } = require('./config/dbconfig');
 const userRoutes = require('./routes/userRoutes');
 const customerRoutes = require('./routes/customerRoutes');
-const admins = require('./routes/adminRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const orderRoutes = require('./routes/orderRoutes');
 const orderItemRoutes = require('./routes/order_itemRoutes');
 const paymentRoute = require('./routes/paymentRoutes');
 
-// const cartItems = require('./routes/cart_itemRoutes');
-// const carts = require('./routes/cartRoutes');
-const item = require('./routes/itemRoutes');
+const cartItemRoutes = require('./routes/cart_itemRoutes');
+const cartRoutes = require('./routes/cartRoutes');
+const itemRoutes = require('./routes/itemRoutes');
 require('dotenv').config();
 
 let app = express();
@@ -28,13 +28,13 @@ initWebRoute(app);
 
 app.use('/api/users', userRoutes);
 app.use('/api/customers', customerRoutes);
-app.use('/api/admins', admins);
+app.use('/api/admins', adminRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/orderItems', orderItemRoutes);
 app.use('/api/payments', paymentRoute);
-// app.use('/api/cartItems', cartItems);
-// app.use('/api/carts', carts);
-app.use('/api/items', item);
+app.use('/api/cartItems', cartItemRoutes);
+app.use('/api/carts', cartRoutes);
+app.use('/api/items', itemRoutes);
 
 
 connectDB()

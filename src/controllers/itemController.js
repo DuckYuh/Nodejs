@@ -2,7 +2,7 @@
 const itemModel = require('../models/itemModel');
 
 //Lấy danh sách tất cả sản phẩm
-exports.getitems = async (req, res) => {
+exports.getItems = async (req, res) => {
     try {
         const items = await itemModel.getAllItem();
         res.status(200).json(items);

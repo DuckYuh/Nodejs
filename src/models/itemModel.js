@@ -66,7 +66,6 @@ const deleteItem = async (itemID) => {
 
 module.exports = {
     getAllItem,
-    checkItemExist,
     getItemById,
     createItem,
     updateItem,
