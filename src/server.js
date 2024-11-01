@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request } from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoute from "./routes/web";
@@ -16,6 +16,9 @@ const paymentRoute = require('./routes/paymentRoutes');
 const cartItemRoutes = require('./routes/cart_itemRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const itemRoutes = require('./routes/itemRoutes');
+
+const loginApi = require('./services/loginService');
+const signupApi = require('./services/signupService');
 
 require('dotenv').config();
 
@@ -37,6 +40,9 @@ app.use('/api/payments', paymentRoute);
 app.use('/api/cartItems', cartItemRoutes);
 app.use('/api/carts', cartRoutes);
 app.use('/api/items', itemRoutes);
+
+app.post('/login',loginApi.login);
+app.post('/signus',signupApi.signup);
 
 
 connectDB()
