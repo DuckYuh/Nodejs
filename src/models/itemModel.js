@@ -35,7 +35,7 @@ const checkItemExist = async (itemname) => {
 const createItem = async (itemID, imageID, itemname, itemDescription, itemType, price, size, quantity ) => {
     try {
         // Kiểm tra sản phẩm đã tồn tại chưa
-        const itemnameExists = await checkitemnameExists(itemname);
+        const itemnameExists = await checkItemExist(itemname);
         if(itemnameExists) {
             throw new Error('itemname already exists'); // Ném lỗi nếu itemname đã tồn tại
         }

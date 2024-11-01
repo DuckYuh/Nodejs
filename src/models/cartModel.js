@@ -6,7 +6,7 @@ const CartModel = {
         const request = new sql.Request();
         await request
             .input('cartID', sql.Char(10), cartID)            
-            .input('itemID', sql.Char(10), itemID)
+            .input('customerID', sql.Char(10), customerID)
             .input('price', sql.Int, price)            
             .query('INSERT INTO Cart(cartID, customerID, price) VALUES(@cartID, @customerID, @price)');
     },
@@ -24,7 +24,7 @@ const CartModel = {
             return result.recordset[0];
     },
 
-    updateCart: async (cartID, customerID, itemID, price, quantity, cartDay) => {
+    updateCart: async (cartID, customerID, price) => {
         const request = new sql.Request();
         await request
             .input('cartID', sql.Char(10), cartID)

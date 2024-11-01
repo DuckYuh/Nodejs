@@ -2,7 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRoute from "./routes/web";
+
 const { connectDB } = require('./config/dbconfig');
+
 const userRoutes = require('./routes/userRoutes');
 const customerRoutes = require('./routes/customerRoutes');
 const adminRoutes = require('./routes/adminRoutes');
@@ -14,11 +16,11 @@ const paymentRoute = require('./routes/paymentRoutes');
 const cartItemRoutes = require('./routes/cart_itemRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const itemRoutes = require('./routes/itemRoutes');
+
 require('dotenv').config();
 
 let app = express();
 let port = process.env.PORT || 8080;
-require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
