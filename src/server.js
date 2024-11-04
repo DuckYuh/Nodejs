@@ -42,7 +42,7 @@ app.use('/api/carts', cartRoutes);
 app.use('/api/items', itemRoutes);
 
 app.post('/login',loginApi.login);
-app.post('/signus',signupApi.signup);
+app.post('/signup',signupApi.signup);
 
 
 connectDB()
