@@ -4,7 +4,7 @@ const{sql} = require('../config/dbconfig');
 //Hàm lấy danh sách tất cả sản phẩm
 const getAllItem = async () =>{
     try{
-        const result = await sqll.query`SELECT * FROM [dbo].[Item]`;
+        const result = await sql.query`SELECT * FROM [dbo].[Item]`;
         return result.recordset;
     } catch (error) {
         throw error;;
