@@ -4,7 +4,7 @@ const uploadFile = async (req, res) => {
     try {
         res.json({
             success:1,
-            image_url:'http://localhost:${port}/images/${req.file.filename}'
+            file: req.file
         })
     } catch(error) {
         console.error('Lỗi:', error);

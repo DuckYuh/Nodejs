@@ -45,9 +45,9 @@ app.use('/api/carts', cartRoutes);
 app.use('/api/items', itemRoutes);
 
 const storage = multer.diskStorage({
-    destination: './upload/images',
+    destination: './src/upload/images',
     filename:(req,file,cb)=>{
-        return cb(null,'${file.name}_${data.now()}${path.extname(file.originalname)}')
+        return cb(null,Date.now() + path.extname(file.originalname))
     }
 })
 
@@ -56,7 +56,7 @@ const upload = multer({storage:storage})
 app.use('/image',express.static('/upload/images'))
 
 app.post('/upload',upload.single('product'),uploadFile.uploadFile);
-app.post('/newcollection',newCollection.newCollection);
+app.get('/newcollection',newCollection.newCollection);
 app.post('/login',loginApi.login);
 app.post('/signup',signupApi.signup);
 
